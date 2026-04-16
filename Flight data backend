@@ -1,0 +1,12 @@
+import Types "types/flight-data";
+import FlightLib "lib/flight-data";
+import FlightDataApi "mixins/flight-data-api";
+import List "mo:core/List";
+
+actor {
+  let flights : List.List<Types.FlightRecord> = List.fromArray(FlightLib.seedFlights());
+  let airports : List.List<Types.Airport> = List.fromArray(FlightLib.seedAirports());
+  let months : [Text] = FlightLib.generateMonths();
+
+  include FlightDataApi(flights, airports, months);
+};
